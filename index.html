@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>Happy Telangana Formation Day | Dream Ladders</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,162 +20,423 @@ body{
     font-family:'Poppins',sans-serif;
     overflow:hidden;
     height:100vh;
-    background:linear-gradient(135deg,#ff008c,#6a00ff);
+
+    /* LOGO INSPIRED GRADIENT */
+    background:
+    linear-gradient(
+    135deg,
+    #0e2347 0%,
+    #173b74 25%,
+    #1f4d8f 45%,
+    #111111 65%,
+    #5d1717 100%
+    );
+
     display:flex;
-    align-items:center;
     justify-content:center;
-    color:white;
+    align-items:center;
     position:relative;
+    color:white;
 }
 
-/* Background Glow */
+/* Animated Gradient Overlay */
 
-.bg-circle{
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top left,
+    rgba(255,255,255,0.08),
+    transparent 35%),
+
+    radial-gradient(circle at bottom right,
+    rgba(255,255,255,0.08),
+    transparent 35%);
+
+    animation:bgMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes bgMove{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.1);
+    }
+}
+
+/* Floating Glow */
+
+.glow{
     position:absolute;
     border-radius:50%;
-    background:rgba(255,255,255,0.08);
-    animation:float 10s infinite ease-in-out;
+    filter:blur(80px);
+    opacity:0.35;
+    animation:float 10s ease-in-out infinite;
 }
 
-.bg-circle:nth-child(1){
+.glow1{
+    width:350px;
+    height:350px;
+    background:#1f4d8f;
+    top:-100px;
+    left:-100px;
+}
+
+.glow2{
     width:280px;
     height:280px;
-    left:-100px;
-    top:10%;
-}
-
-.bg-circle:nth-child(2){
-    width:200px;
-    height:200px;
-    right:-70px;
-    bottom:10%;
+    background:#7a2020;
+    bottom:-80px;
+    right:-80px;
     animation-duration:14s;
 }
 
 @keyframes float{
+
     0%,100%{
         transform:translateY(0px);
     }
+
     50%{
-        transform:translateY(-30px);
+        transform:translateY(-35px);
     }
 }
 
-/* Card */
+/* Main Glass Card */
 
 .container{
+
     width:90%;
-    max-width:850px;
+    max-width:900px;
+
+    padding:55px 35px;
+
     text-align:center;
-    padding:50px 35px;
-    border-radius:25px;
+
     background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(12px);
+
     border:1px solid rgba(255,255,255,0.15);
-    box-shadow:0 10px 40px rgba(0,0,0,0.25);
+
+    backdrop-filter:blur(16px);
+
+    border-radius:30px;
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.35),
+    inset 0 0 20px rgba(255,255,255,0.05);
+
     position:relative;
     z-index:5;
+
     animation:fadeUp 1.5s ease;
 }
 
 @keyframes fadeUp{
+
     from{
         opacity:0;
         transform:translateY(40px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
 }
 
+/* Logo */
+
 .logo{
-    letter-spacing:5px;
-    font-weight:600;
+
+    width:120px;
+    height:120px;
+
+    object-fit:contain;
+
     margin-bottom:25px;
-    opacity:0.9;
+
+    animation:logoFloat 4s ease-in-out infinite;
+
+    filter:
+    drop-shadow(0 0 20px rgba(255,255,255,0.25));
 }
+
+@keyframes logoFloat{
+
+    0%,100%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+/* Brand */
+
+.brand{
+
+    letter-spacing:5px;
+
+    font-size:14px;
+
+    margin-bottom:20px;
+
+    opacity:0.9;
+
+    font-weight:600;
+}
+
+/* Heading */
 
 h1{
-    font-size:clamp(2.5rem,7vw,5rem);
-    line-height:1.2;
-    margin-bottom:20px;
-    text-shadow:0 0 20px rgba(255,255,255,0.3);
+
+    font-size:clamp(2.8rem,7vw,5.5rem);
+
+    line-height:1.15;
+
+    margin-bottom:22px;
+
+    font-weight:800;
+
+    background:
+    linear-gradient(
+    90deg,
+    #ffffff,
+    #dce8ff,
+    #ffffff
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+    0 0 30px rgba(255,255,255,0.15);
+
+    animation:glowText 3s ease-in-out infinite alternate;
 }
 
+@keyframes glowText{
+
+    from{
+        filter:brightness(1);
+    }
+
+    to{
+        filter:brightness(1.25);
+    }
+}
+
+/* Description */
+
 p{
-    line-height:1.8;
+
+    max-width:700px;
+
+    margin:auto;
+
+    line-height:1.9;
+
+    font-size:1.08rem;
+
     opacity:0.95;
-    font-size:1.05rem;
-    margin-bottom:35px;
+
+    margin-bottom:40px;
 }
 
 .highlight{
-    color:#ffe66d;
-    font-weight:600;
+
+    color:#8dc0ff;
+    font-weight:700;
 }
 
 /* Button */
 
 .button{
+
     border:none;
-    padding:16px 40px;
-    border-radius:50px;
-    background:white;
-    color:#ff008c;
-    font-weight:700;
+
+    padding:17px 42px;
+
+    border-radius:60px;
+
     font-size:1rem;
+
+    font-weight:700;
+
     cursor:pointer;
-    transition:0.3s ease;
+
+    color:white;
+
+    background:
+    linear-gradient(
+    135deg,
+    #173b74,
+    #1f4d8f,
+    #7a2020
+    );
+
+    box-shadow:
+    0 8px 30px rgba(0,0,0,0.35);
+
+    transition:0.35s ease;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
 .button:hover{
-    transform:translateY(-4px) scale(1.05);
+
+    transform:
+    translateY(-5px)
+    scale(1.04);
+
+    box-shadow:
+    0 12px 40px rgba(0,0,0,0.4);
 }
 
-/* Flower Animation */
+.button::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.3),
+    transparent
+    );
+
+    transition:0.6s;
+}
+
+.button:hover::before{
+
+    left:120%;
+}
+
+/* Footer */
+
+.footer{
+
+    margin-top:35px;
+
+    font-size:14px;
+
+    opacity:0.8;
+
+    letter-spacing:1px;
+}
+
+/* Flower Burst */
 
 .flower{
-    position:absolute;
+
+    position:fixed;
+
     font-size:28px;
+
     pointer-events:none;
+
+    z-index:9999;
+
     animation:burst 3s linear forwards;
 }
 
 @keyframes burst{
 
     0%{
-        transform:translate(0,0) scale(0.5) rotate(0deg);
+
+        transform:
+        translate(0,0)
+        scale(0.5)
+        rotate(0deg);
+
         opacity:1;
     }
 
     100%{
+
         transform:
         translate(var(--x), var(--y))
-        scale(1.5)
+        scale(1.8)
         rotate(360deg);
 
         opacity:0;
     }
 }
 
-/* Footer */
+/* Floating Particles */
 
-.footer{
-    margin-top:30px;
-    font-size:14px;
-    letter-spacing:1px;
-    opacity:0.8;
+.particle{
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.5);
+
+    animation:particles 12s linear infinite;
 }
+
+@keyframes particles{
+
+    from{
+
+        transform:
+        translateY(100vh);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    to{
+
+        transform:
+        translateY(-120vh);
+
+        opacity:0;
+    }
+}
+
+/* Responsive */
 
 @media(max-width:768px){
 
     .container{
-        padding:35px 25px;
+
+        padding:40px 25px;
     }
 
     p{
-        font-size:0.95rem;
+
+        font-size:0.96rem;
+    }
+
+    .logo{
+
+        width:95px;
+        height:95px;
     }
 }
 
@@ -183,12 +445,30 @@ p{
 
 <body>
 
-<div class="bg-circle"></div>
-<div class="bg-circle"></div>
+<!-- Background Glow -->
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<!-- Floating Particles -->
+<div class="particle" style="left:10%; animation-delay:0s;"></div>
+<div class="particle" style="left:20%; animation-delay:2s;"></div>
+<div class="particle" style="left:35%; animation-delay:4s;"></div>
+<div class="particle" style="left:55%; animation-delay:1s;"></div>
+<div class="particle" style="left:70%; animation-delay:5s;"></div>
+<div class="particle" style="left:85%; animation-delay:3s;"></div>
+
+<!-- Main Card -->
 
 <div class="container">
 
-    <div class="logo">
+    <!-- YOUR LOGO -->
+    <img
+    src="logo.png"
+    alt="Dream Ladders Logo"
+    class="logo"
+    >
+
+    <div class="brand">
         DREAM LADDERS
     </div>
 
@@ -198,15 +478,24 @@ p{
     </h1>
 
     <p>
-        Celebrating the spirit, culture, innovation, and strength of
+
+        Celebrating the spirit, culture,
+        innovation, and unstoppable growth of
         <span class="highlight">Telangana</span>.
+
         <br><br>
-        Dream Ladders proudly honors the journey of unity,
-        growth, and future development.
+
+        Dream Ladders proudly honors the vision,
+        unity, and future development of our state.
+
     </p>
 
-    <button class="button" onclick="launchFlowers(event)">
+    <button
+    class="button"
+    onclick="launchFlowers(event)">
+
         Jai Telangana ✨
+
     </button>
 
     <div class="footer">
@@ -217,33 +506,51 @@ p{
 
 <script>
 
+/* Flower Burst Animation */
+
 function launchFlowers(event){
 
-    const flowers = ["🌸","🌺","🌷","✨","💐","🌹"];
+    const flowers = [
+    "🌸","🌺","🌷",
+    "✨","💐","🌹",
+    "🪷","🌼"
+    ];
 
-    for(let i=0; i<40; i++){
+    for(let i=0; i<45; i++){
 
-        const flower = document.createElement("div");
+        const flower =
+        document.createElement("div");
 
         flower.classList.add("flower");
 
-        flower.innerHTML = flowers[Math.floor(Math.random()*flowers.length)];
+        flower.innerHTML =
+        flowers[Math.floor(
+        Math.random()*flowers.length)];
 
-        const x = (Math.random() - 0.5) * 800 + "px";
-        const y = (Math.random() - 0.5) * 800 + "px";
+        const x =
+        (Math.random()-0.5)*900 + "px";
 
-        flower.style.setProperty("--x", x);
-        flower.style.setProperty("--y", y);
+        const y =
+        (Math.random()-0.5)*900 + "px";
 
-        flower.style.left = event.clientX + "px";
-        flower.style.top = event.clientY + "px";
+        flower.style.setProperty("--x",x);
+        flower.style.setProperty("--y",y);
 
-        flower.style.fontSize = (20 + Math.random()*25) + "px";
+        flower.style.left =
+        event.clientX - 10 + "px";
+
+        flower.style.top =
+        event.clientY - 10 + "px";
+
+        flower.style.fontSize =
+        (20 + Math.random()*30) + "px";
 
         document.body.appendChild(flower);
 
         setTimeout(()=>{
+
             flower.remove();
+
         },3000);
     }
 }
