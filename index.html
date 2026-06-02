@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -16,12 +17,19 @@
     box-sizing:border-box;
 }
 
-body{
-    font-family:'Poppins',sans-serif;
-    overflow:hidden;
-    height:100vh;
+html{
+    scroll-behavior:smooth;
+}
 
-    /* LOGO INSPIRED GRADIENT */
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    min-height:100svh;
+
     background:
     linear-gradient(
     135deg,
@@ -35,14 +43,19 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
+
     position:relative;
     color:white;
+
+    padding:20px;
 }
 
-/* Animated Gradient Overlay */
+/* Animated Overlay */
 
 body::before{
+
     content:"";
+
     position:absolute;
     inset:0;
 
@@ -56,6 +69,8 @@ body::before{
     transparent 35%);
 
     animation:bgMove 8s ease-in-out infinite alternate;
+
+    z-index:0;
 }
 
 @keyframes bgMove{
@@ -65,34 +80,46 @@ body::before{
     }
 
     to{
-        transform:scale(1.1);
+        transform:scale(1.08);
     }
 }
 
-/* Floating Glow */
+/* Glows */
 
 .glow{
+
     position:absolute;
+
     border-radius:50%;
+
     filter:blur(80px);
+
     opacity:0.35;
+
     animation:float 10s ease-in-out infinite;
 }
 
 .glow1{
+
     width:350px;
     height:350px;
+
     background:#1f4d8f;
+
     top:-100px;
     left:-100px;
 }
 
 .glow2{
+
     width:280px;
     height:280px;
+
     background:#7a2020;
+
     bottom:-80px;
     right:-80px;
+
     animation-duration:14s;
 }
 
@@ -107,11 +134,44 @@ body::before{
     }
 }
 
-/* Main Glass Card */
+/* Floating Particles */
+
+.particle{
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.5);
+
+    animation:particles 12s linear infinite;
+}
+
+@keyframes particles{
+
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+
+/* Main Card */
 
 .container{
 
-    width:90%;
+    width:100%;
     max-width:900px;
 
     padding:55px 35px;
@@ -252,6 +312,7 @@ p{
 .highlight{
 
     color:#8dc0ff;
+
     font-weight:700;
 }
 
@@ -380,76 +441,94 @@ p{
     }
 }
 
-/* Floating Particles */
-
-.particle{
-
-    position:absolute;
-
-    width:6px;
-    height:6px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,0.5);
-
-    animation:particles 12s linear infinite;
-}
-
-@keyframes particles{
-
-    from{
-
-        transform:
-        translateY(100vh);
-
-        opacity:0;
-    }
-
-    10%{
-        opacity:1;
-    }
-
-    to{
-
-        transform:
-        translateY(-120vh);
-
-        opacity:0;
-    }
-}
-
-/* Responsive */
+/* Mobile Responsive */
 
 @media(max-width:768px){
 
+    body{
+        padding:18px;
+        align-items:flex-start;
+    }
+
     .container{
 
-        padding:40px 25px;
+        margin-top:30px;
+        margin-bottom:30px;
+
+        padding:35px 22px;
+
+        border-radius:24px;
+    }
+
+    h1{
+
+        font-size:2.5rem;
+
+        line-height:1.2;
+
+        margin-bottom:18px;
     }
 
     p{
 
-        font-size:0.96rem;
+        font-size:0.95rem;
+
+        line-height:1.7;
+
+        margin-bottom:32px;
     }
 
     .logo{
 
-        width:95px;
-        height:95px;
+        width:85px;
+        height:85px;
+    }
+
+    .brand{
+
+        font-size:12px;
+
+        letter-spacing:3px;
+    }
+
+    .button{
+
+        width:100%;
+
+        padding:16px 20px;
+
+        font-size:1rem;
+    }
+
+    .footer{
+
+        font-size:12px;
+    }
+
+    .glow1{
+        width:220px;
+        height:220px;
+    }
+
+    .glow2{
+        width:180px;
+        height:180px;
     }
 }
 
 </style>
+
 </head>
 
 <body>
 
 <!-- Background Glow -->
+
 <div class="glow glow1"></div>
 <div class="glow glow2"></div>
 
 <!-- Floating Particles -->
+
 <div class="particle" style="left:10%; animation-delay:0s;"></div>
 <div class="particle" style="left:20%; animation-delay:2s;"></div>
 <div class="particle" style="left:35%; animation-delay:4s;"></div>
@@ -462,6 +541,7 @@ p{
 <div class="container">
 
     <!-- YOUR LOGO -->
+
     <img
     src="logo.png"
     alt="Dream Ladders Logo"
@@ -490,9 +570,12 @@ p{
 
     </p>
 
+    <!-- BUTTON -->
+
     <button
     class="button"
-    onclick="launchFlowers(event)">
+    onclick="launchFlowers(event)"
+    ontouchstart="launchFlowers(event)">
 
         Jai Telangana ✨
 
@@ -506,9 +589,9 @@ p{
 
 <script>
 
-/* Flower Burst Animation */
+/* FLOWER BURST + REDIRECT */
 
-function launchFlowers(event){
+function launchFlowers(e){
 
     const flowers = [
     "🌸","🌺","🌷",
@@ -516,7 +599,20 @@ function launchFlowers(event){
     "🪷","🌼"
     ];
 
-    for(let i=0; i<45; i++){
+    let xPos, yPos;
+
+    if(e.touches){
+
+        xPos = e.touches[0].clientX;
+        yPos = e.touches[0].clientY;
+
+    }else{
+
+        xPos = e.clientX;
+        yPos = e.clientY;
+    }
+
+    for(let i=0; i<40; i++){
 
         const flower =
         document.createElement("div");
@@ -528,22 +624,22 @@ function launchFlowers(event){
         Math.random()*flowers.length)];
 
         const x =
-        (Math.random()-0.5)*900 + "px";
+        (Math.random()-0.5)*500 + "px";
 
         const y =
-        (Math.random()-0.5)*900 + "px";
+        (Math.random()-0.5)*500 + "px";
 
         flower.style.setProperty("--x",x);
         flower.style.setProperty("--y",y);
 
         flower.style.left =
-        event.clientX - 10 + "px";
+        xPos + "px";
 
         flower.style.top =
-        event.clientY - 10 + "px";
+        yPos + "px";
 
         flower.style.fontSize =
-        (20 + Math.random()*30) + "px";
+        (18 + Math.random()*18) + "px";
 
         document.body.appendChild(flower);
 
@@ -553,6 +649,15 @@ function launchFlowers(event){
 
         },3000);
     }
+
+    /* REDIRECT */
+
+    setTimeout(()=>{
+
+        window.location.href =
+        "https://dreamladders.github.io/Main/";
+
+    },2000);
 }
 
 </script>
